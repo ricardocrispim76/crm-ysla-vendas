@@ -1,0 +1,33 @@
+
+import streamlit as st
+import pandas as pd
+
+# Carregar base de dados (extraída do Excel)
+data = pd.read_csv("clientes_crm.csv")
+
+st.set_page_config(page_title="CRM YSLA Iguatemi", layout="wide")
+
+st.title("📱 CRM de Vendas – YSLA Iguatemi")
+st.markdown("Visualize suas clientes e entre em contato com um clique no WhatsApp.")
+
+# Filtro por nome
+nome_filtro = st.text_input("🔍 Buscar cliente por nome:")
+
+if nome_filtro:
+    data = data[data['Cliente'].str.contains(nome_filtro, case=False, na=False)]
+
+# Exibir os dados em formato de cartões
+for _, row in data.iterrows():
+    st.markdown("---")
+    col1, col2 = st.columns([3, 1])
+
+    with col1:
+        st.markdown(f"**👤 Cliente:** {row['Cliente']}")
+        st.markdown(f"🛍️ **Última Compra:** {row['UltimaCompra']}")
+        st.markdown(f"🎽 **Qtde Peças:** {row['QtdePecas']} | 💰 **Valor Total:** R$ {row['ValorTotal']}")
+
+    with col2:
+        st.link_button("💬 WhatsApp", row['LinkWhatsApp'], use_container_width=True)
+
+st.markdown("---")
+st.caption("Desenvolvido por RCS Consultoria | Powered by Streamlit")
