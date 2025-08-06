@@ -2,15 +2,15 @@
 import streamlit as st
 import pandas as pd
 
-# Carregar base de dados (extraída do Excel)
-data = pd.read_csv("clientes_crm.csv")
+# Carregar base de dados com separador ponto e vírgula
+data = pd.read_csv("clientes_crm.csv", sep=";", encoding="utf-8")
 
 st.set_page_config(page_title="CRM YSLA Iguatemi", layout="wide")
 
 st.title("📱 CRM de Vendas – YSLA Iguatemi")
 st.markdown("Visualize suas clientes e entre em contato com um clique no WhatsApp.")
 
-# Filtro por nome
+# Campo de busca por nome
 nome_filtro = st.text_input("🔍 Buscar cliente por nome:")
 
 if nome_filtro:
