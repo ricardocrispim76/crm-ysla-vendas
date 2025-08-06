@@ -1,6 +1,4 @@
-# Código corrigido com o nome correto da coluna de cliente: CLIENTE_VAREJO
 
-codigo_final = """
 import streamlit as st
 import pandas as pd
 
@@ -34,11 +32,3 @@ for _, row in data.iterrows():
 
 st.markdown("---")
 st.caption("Desenvolvido por RCS Consultoria | Powered by Streamlit")
-"""
-
-# Salvar o arquivo final corrigido
-file_final_path = "/mnt/data/app_crm_ysla_FINAL.py"
-with open(file_final_path, "w", encoding="utf-8") as f:
-    f.write(codigo_final)
-
-file_final_path
